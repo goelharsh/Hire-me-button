@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.btn-pink{
+    background-color: #e84949;
+    padding: 0.8rem 2.3rem;
+    color: white;
+    font-size: 18px;
+    box-shadow: 5px 5px 7px 0 #0000003f;
+ 
+    /* keuki hmne trasntion button ke uper leke ani hai */
+    position: relative;    
+
+    z-index: 1;
+}
+
+
+/* before mtlb hota hai ki yha vo likha jayga jo uper wale content se pehle chahe hain */
+/* for ex- agr hum before ke content me 'abc' likh de to hire me se pehle abc likha aa jayega  */
+
+/* similarly after selector ke sath hai */
+
+
+
+/* now hmne yha before isliye bnaya hai */
+/* keuki hum yha per jo background color hai vo create krenge , or vo tab visible hoga jab hum uske uper hover krenge */
+.btn-pink::before{
+    /* content: "abc"; */
+    content: "";
+    background-color: #1f1f1f;
+    /* is black coor ki side ko posiotn bhi kkrna pdega,*/
+    position: absolute;
+    /* or hum chahte hai ki jo slide hai vo vo pura ka pura button cover kr le */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    /* isse sara button balck ho jaega jo hme iska scale o rakhna pdega taki ye pihce chup jae */
+    transform: scaleX(0);
+
+    transform-origin: left;
+    /* smoothness ke liye */
+    transition: all 0.8s;  
+
+    z-index: -1;
+}
+
+
+.btn-pink:hover::before{
+    transform: scaleX(1);
+}
